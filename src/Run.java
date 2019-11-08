@@ -1,8 +1,3 @@
-import com.sun.deploy.util.ArrayUtil;
-import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
-import sun.plugin.javascript.navig.Array;
-
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -18,7 +13,7 @@ public class Run {
         table = Fulltable(table, " ");
         Draw(table);
 
-        while (canI(table)) {
+        while (CanI(table)) {
             gamer = "X";
             System.out.println("\nGracz " + gamer + " twój ruch");
             System.out.println("x=");
@@ -85,7 +80,7 @@ public class Run {
         table2[0] = "1";
         table2[1] = "1";
         table2[2] = "1";
-        if (canI(table)) {
+        if (CanI(table)) {
             while (!isChange) {
                 int randomValueX = ThreadLocalRandom.current().nextInt(0, 3);
                 int randomValueY = ThreadLocalRandom.current().nextInt(0, 3);
@@ -100,7 +95,7 @@ public class Run {
         return table;
     }
 
-    public static boolean canI(String[][] table) {
+    public static boolean CanI(String[][] table) {
         boolean canI = false;
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table.length; j++) {
@@ -110,6 +105,10 @@ public class Run {
             }
         }
         return canI;
+    }
+    public static boolean IsWin(String[][] table) {
+        boolean isWin   = false;
+        return isWin;
     }
 }
 
