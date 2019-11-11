@@ -7,7 +7,7 @@ public class Run {
         Scanner scanner = new Scanner(System.in);
         String[][] table = new String[3][3];
         String gamer = "X";
-        boolean isWinGame=false;
+        boolean isWinGame = false;
 
        /* Draw(table);
         table = Fulltable(table, gamer);
@@ -31,20 +31,20 @@ public class Run {
         }*/
             table = SetUser(table, xaxis, yaxis, gamer);
             Draw(table);
-            isWinGame=(IsWin(table,gamer));
+            isWinGame = (IsWin(table, gamer));
             if (isWinGame) {
                 break;
             }
             gamer = "O";
             table = MoveFromComputer(table, gamer);
             Draw(table);
-            isWinGame=(IsWin(table,gamer));
+            isWinGame = (IsWin(table, gamer));
             if (isWinGame) {
-               break;
+                break;
             }
         }
-        if(isWinGame){
-            System.out.println("\nWygrał: "+ gamer);
+        if (isWinGame) {
+            System.out.println("\nWygrał: " + gamer);
         } else {
             System.out.println("\nREMIS");
         }
@@ -134,6 +134,13 @@ public class Run {
                 isWin = true;
             }
         }
+        if (table[0][0].equalsIgnoreCase(mychar) && table[1][1].equalsIgnoreCase(mychar) && table[2][2].equalsIgnoreCase(mychar)) {
+            isWin = true;
+        }
+        if (table[0][2].equalsIgnoreCase(mychar) && table[1][1].equalsIgnoreCase(mychar) && table[2][0].equalsIgnoreCase(mychar)) {
+            isWin = true;
+        }
+
         return isWin;
 
     }
