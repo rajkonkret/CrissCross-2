@@ -117,6 +117,10 @@ public class Run {
         return table;
     }
 
+    public static String[][] MoveFromComputerAI(String[][] table) {
+        return table;
+    }
+
     public static boolean CanI(String[][] table) {
         boolean canI = false;
         for (int i = 0; i < table.length; i++) {
