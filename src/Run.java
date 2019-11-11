@@ -1,3 +1,4 @@
+import java.util.MissingFormatWidthException;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -6,6 +7,7 @@ public class Run {
         Scanner scanner = new Scanner(System.in);
         String[][] table = new String[3][3];
         String gamer = "X";
+        boolean isWinGame=false;
 
        /* Draw(table);
         table = Fulltable(table, gamer);
@@ -29,9 +31,22 @@ public class Run {
         }*/
             table = SetUser(table, xaxis, yaxis, gamer);
             Draw(table);
+            isWinGame=(IsWin(table,gamer));
+            if (isWinGame) {
+                break;
+            }
             gamer = "O";
             table = MoveFromComputer(table, gamer);
             Draw(table);
+            isWinGame=(IsWin(table,gamer));
+            if (isWinGame) {
+               break;
+            }
+        }
+        if(isWinGame){
+            System.out.println("\nWygrał: "+ gamer);
+        } else {
+            System.out.println("\nREMIS");
         }
         System.out.println("\nKONIEC");
     }
@@ -106,9 +121,21 @@ public class Run {
         }
         return canI;
     }
-    public static boolean IsWin(String[][] table) {
-        boolean isWin   = false;
+
+    public static boolean IsWin(String[][] table, String mychar) {
+        boolean isWin = false;
+
+        for (int i = 0; i < 3; i++) {
+
+            if (table[i][0].equalsIgnoreCase(mychar) && table[i][1].equalsIgnoreCase(mychar) && table[i][2].equalsIgnoreCase(mychar)) {
+                isWin = true;
+            }
+            if (table[0][i].equalsIgnoreCase(mychar) && table[1][i].equalsIgnoreCase(mychar) && table[2][i].equalsIgnoreCase(mychar)) {
+                isWin = true;
+            }
+        }
         return isWin;
+
     }
 }
 
