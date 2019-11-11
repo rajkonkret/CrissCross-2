@@ -90,6 +90,7 @@ public class Run {
                 isChange = true;
             } else {
                 System.out.println("Błędny ruch!!!");
+                break;
             }
         }
         return table;
