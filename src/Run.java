@@ -80,12 +80,18 @@ public class Run {
     }
 
     public static String[][] SetUser(String[][] table, int x, int y, String mychar) {
+        boolean isChange = false;
 
-        if (table[y][x].equalsIgnoreCase(" ")) {
+        while (!isChange) {
 
-            table[y][x] = mychar;
+            if (table[y][x].equalsIgnoreCase(" ")) {
+
+                table[y][x] = mychar;
+                isChange = true;
+            } else {
+                System.out.println("Błędny ruch!!!");
+            }
         }
-
         return table;
     }
 
