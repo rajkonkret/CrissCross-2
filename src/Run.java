@@ -98,6 +98,10 @@ public class Run {
         return table;
     }
 
+    public static void calculateWage(String[][] table, int[][] tablewage) {
+
+    }
+
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
         boolean isChange = false;
         String[] table2 = new String[3];
