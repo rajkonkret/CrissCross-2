@@ -6,8 +6,10 @@ public class Run {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String[][] table = new String[3][3];
-        String gamer = "X";
+        int[][] tablewage = new int[3][3];
         boolean isWinGame = false;
+
+        String gamer = "X";
 
        /* Draw(table);
         table = Fulltable(table, gamer);
