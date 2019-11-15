@@ -34,6 +34,8 @@ public class Run {
             table = SetUser(table, xaxis, yaxis, gamer);
             Draw(table);
             isWinGame = (IsWin(table, gamer));
+            calculateWage(table,tablewage);
+            Draw(tablewage);
             if (isWinGame) {
                 break;
             }
@@ -68,6 +70,20 @@ public class Run {
             }
         }
     }
+    private static void Draw(int[][] tablewage){
+        System.out.println("Plansza gry:");
+
+        System.out.print("    0   1   2");
+        for (int i = 0; i < tablewage.length; i++) {
+            System.out.println((i == 0) ? "" : "\n  |---|---|---");
+            System.out.print(i);
+            for (int j = 0; j < tablewage.length; j++) {
+
+                System.out.print(((j == 0) ? " | " : "") + tablewage[i][j] + " | ");
+            }
+        }
+
+    }
 
     public static String[][] Fulltable(String[][] table, String myChar) {
 
@@ -99,6 +115,24 @@ public class Run {
     }
 
     public static void calculateWage(String[][] table, int[][] tablewage) {
+        int countX =0;
+        int countO =0;
+
+        for (int i = 0; i < 3; i++) {
+
+            if (table[0][i].equalsIgnoreCase("X")){
+            countX=+1;
+            }
+            if (table[0][i].equalsIgnoreCase("O")){
+            countO=+1;
+            }
+        }
+        int wage = countX - countO;
+        for (int i=0; i<3; i++){
+            if (table[0][i].equalsIgnoreCase(" ")) {
+                tablewage[0][i]=tablewage[0][i]+wage;
+            }
+        }
 
     }
 
@@ -123,8 +157,8 @@ public class Run {
         return table;
     }
 
-    public static String[][] MoveFromComputerAI(String[][] table)
-    {
+    public static String[][] MoveFromComputerAI(String[][] table) {
+
         return table;
     }
 
@@ -152,6 +186,7 @@ public class Run {
                 isWin = true;
             }
         }
+
         if (table[0][0].equalsIgnoreCase(mychar) && table[1][1].equalsIgnoreCase(mychar) && table[2][2].equalsIgnoreCase(mychar)) {
             isWin = true;
         }
