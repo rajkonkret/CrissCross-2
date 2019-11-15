@@ -126,9 +126,9 @@ public class Run {
         int wage;
         int countX;
         int countO;
+        List<Integer> listofwage = new ArrayList<>();
         Map<String, Integer> wageMap = new HashMap<>();
         wageMap.clear();
-
         Fulltable(tablewage, 0);
         for (int j = 0; j < 3; j++) {
             countO = 0;
@@ -180,7 +180,8 @@ public class Run {
         }
         System.out.println(wageMap.size());
         //System.out.println(wageMap.get(0).toString());
-        wageMap.forEach((key, value) -> System.out.println(key + " " + value));
+        wageMap.forEach((key, value) -> listofwage.add(Integer.valueOf(key)));
+        System.out.println(Collections.max(listofwage));
     }
 
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
