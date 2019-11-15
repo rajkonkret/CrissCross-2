@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.MissingFormatWidthException;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Run {
@@ -182,6 +179,8 @@ public class Run {
             }
         }
         System.out.println(wageMap.size());
+        System.out.println(wageMap.get(1).toString());
+
     }
 
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
