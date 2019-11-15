@@ -4,8 +4,6 @@ import java.util.MissingFormatWidthException;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static java.lang.System.out;
-
 public class Run {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -23,10 +21,10 @@ public class Run {
 
         while (CanI(table)) {
             gamer = "X";
-            out.println("\nGracz " + gamer + " twój ruch");
-            out.println("x=");
+            System.out.println("\nGracz " + gamer + " twój ruch");
+            System.out.println("x=");
             int xaxis = scanner.nextInt();
-            out.println("y=");
+            System.out.println("y=");
             int yaxis = scanner.nextInt();
 
             table = SetUser(table, xaxis, yaxis, gamer);
@@ -47,39 +45,39 @@ public class Run {
         }
 
         if (isWinGame) {
-            out.println("\nWygrał: " + gamer);
+            System.out.println("\nWygrał: " + gamer);
         } else {
-            out.println("\nREMIS");
+            System.out.println("\nREMIS");
         }
-        out.println("\nKONIEC");
+        System.out.println("\nKONIEC");
     }
 
 
     private static void Draw(String[][] table) {
-        out.println(table.length);
-        out.println("Plansza gry:");
+        System.out.println(table.length);
+        System.out.println("Plansza gry:");
 
-        out.print("    0   1   2");
+        System.out.print("    0   1   2");
         for (int i = 0; i < table.length; i++) {
-            out.println((i == 0) ? "" : "\n  |---|---|---");
-            out.print(i);
+            System.out.println((i == 0) ? "" : "\n  |---|---|---");
+            System.out.print(i);
             for (int j = 0; j < table.length; j++) {
 
-                out.print(((j == 0) ? " | " : "") + table[i][j] + " | ");
+                System.out.print(((j == 0) ? " | " : "") + table[i][j] + " | ");
             }
         }
     }
 
     private static void Draw(int[][] tablewage) {
-        out.println("Plansza gry:");
+        System.out.println("Plansza gry:");
 
-        out.print("    0   1   2");
+        System.out.print("    0   1   2");
         for (int i = 0; i < tablewage.length; i++) {
-            out.println((i == 0) ? "" : "\n  |---|---|---");
-            out.print(i);
+            System.out.println((i == 0) ? "" : "\n  |---|---|---");
+            System.out.print(i);
             for (int j = 0; j < tablewage.length; j++) {
 
-                out.print(((j == 0) ? " | " : "") + tablewage[i][j] + " | ");
+                System.out.print(((j == 0) ? " | " : "") + tablewage[i][j] + " | ");
             }
         }
 
@@ -120,7 +118,7 @@ public class Run {
                 table[y][x] = mychar;
                 isChange = true;
             } else {
-                out.println("Błędny ruch!!!");
+                System.out.println("Błędny ruch!!!");
                 break;
             }
         }
@@ -147,12 +145,12 @@ public class Run {
                     countO = +1;
                 }
             }
-            out.println("\n" + countX + " " + countO + " " + j);
+            System.out.println("\n" + countX + " " + countO + " " + j);
             wage = countO - countX;
             for (int i = 0; i < 3; i++) {
                 if (table[j][i].equalsIgnoreCase(" ")) {
                     tablewage[j][i] = tablewage[j][i] + wage;
-                    out.println("\n" + j + " " + wage);
+                    System.out.println("\n" + j + " " + wage);
                 }
             }
         }
@@ -183,7 +181,7 @@ public class Run {
                 wageMap.put(i + j * 3, tablewage[j][i]);
             }
         }
-        out.println(wageMap.size());
+        System.out.println(wageMap.size());
     }
 
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
