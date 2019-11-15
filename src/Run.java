@@ -91,6 +91,17 @@ public class Run {
             }
         }
         return table;
+
+    } public static void Fulltable(int[][] tablewage, int wage) {
+
+        for (int i = 0; i < tablewage.length; i++) {
+
+            for (int j = 0; j < tablewage.length; j++) {
+
+                tablewage[i][j] = wage;
+            }
+        }
+
     }
 
     public static String[][] SetUser(String[][] table, int x, int y, String mychar) {
@@ -115,6 +126,8 @@ public class Run {
         int countX;
         int countO;
 
+        Fulltable(tablewage,0);
+
         for (int j = 0; j < 3; j++) {
             countO = 0;
             countX = 0;
@@ -131,7 +144,7 @@ public class Run {
             wage = countO - countX;
             for (int i = 0; i < 3; i++) {
                 if (table[j][i].equalsIgnoreCase(" ")) {
-                    tablewage[j][i] = wage;
+                    tablewage[j][i] =tablewage[j][i]+wage;
                     System.out.println("\n"+j+" "+wage);
                 }
             }
@@ -152,7 +165,7 @@ public class Run {
             wage = countO - countX;
             for (int i = 0; i < 3; i++) {
                 if (table[i][j].equalsIgnoreCase(" ")) {
-                    tablewage[i][j] = wage;
+                    tablewage[i][j] =tablewage[i][j]+wage;
                 }
             }
         }
