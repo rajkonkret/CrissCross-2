@@ -181,7 +181,8 @@ public class Run {
         System.out.println(wageMap.size());
         //System.out.println(wageMap.get(0).toString());
         wageMap.forEach((key, value) -> listofwage.add(Integer.valueOf(key)));
-        System.out.println(Collections.max(listofwage));
+        int maxWage = Collections.max(listofwage);
+        System.out.println(wageMap.get(String.valueOf(maxWage)));
     }
 
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
