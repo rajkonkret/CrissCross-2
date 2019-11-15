@@ -165,17 +165,32 @@ public class Run {
                 }
             }
 
-            wage = countO - countX;
+            wage = countX - countO;
             for (int i = 0; i < 3; i++) {
                 if (table[i][j].equalsIgnoreCase(" ")) {
                     tablewage[i][j] = tablewage[i][j] + wage;
                 } else {
                     tablewage[i][j] = 99;
-
                 }
             }
         }
-
+        countO = 0;
+        countX = 0;
+        for (int a=0;a<3;a++) {
+            if (table[a][a].equalsIgnoreCase("X")) {
+                countX = +1;
+            } else if (table[a][a].equalsIgnoreCase("O")) {
+                countO = +1;
+            }
+        }
+        wage = countX - countO;
+        for (int a = 0; a < 3; a++) {
+            if (table[a][a].equalsIgnoreCase(" ")) {
+                tablewage[a][a] = tablewage[a][a] + wage;
+            } else {
+                tablewage[a][a] = 99;
+            }
+        }
         for (int j = 0; j < 3; j++) {
             for (int i = 0; i < 3; i++) {
 
