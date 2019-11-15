@@ -144,7 +144,7 @@ public class Run {
                 }
             }
             System.out.println("\n" + countX + " " + countO + " " + j);
-            wage = countO - countX;
+            wage = countX - countO;
             for (int i = 0; i < 3; i++) {
                 if (table[j][i].equalsIgnoreCase(" ")) {
                     tablewage[j][i] = tablewage[j][i] + wage;
