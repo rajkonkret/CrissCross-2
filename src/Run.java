@@ -247,7 +247,7 @@ public class Run {
                     isChange = true;
                 }
             }
-            //System.out.println(Arrays.toString(table2));
+
         }
 
         return table;
