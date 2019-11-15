@@ -29,16 +29,17 @@ public class Run {
             isWinGame = (IsWin(table, gamer));
             calculateWage(table, tablewage);
             Draw(tablewage);
+            Draw(table);
             if (isWinGame) {
                 break;
             }
-            gamer = "O";
+           /* gamer = "O";
             table = MoveFromComputer(table, gamer);
             Draw(table);
             isWinGame = (IsWin(table, gamer));
             if (isWinGame) {
                 break;
-            }
+            }*/
         }
 
         if (isWinGame) {
@@ -168,21 +169,29 @@ public class Run {
             for (int i = 0; i < 3; i++) {
                 if (table[i][j].equalsIgnoreCase(" ")) {
                     tablewage[i][j] = tablewage[i][j] + wage;
+                } else {
+                    tablewage[i][j] = 99;
+
                 }
             }
         }
 
         for (int j = 0; j < 3; j++) {
-            for (int i = 0; i < 3; i ++) {
+            for (int i = 0; i < 3; i++) {
 
-                wageMap.put(String.valueOf(tablewage[j][i]) ,i+j*3);
+                if (tablewage[j][i] != 99) wageMap.put(String.valueOf(tablewage[j][i]), i + j * 3);
             }
         }
         System.out.println(wageMap.size());
         //System.out.println(wageMap.get(0).toString());
         wageMap.forEach((key, value) -> listofwage.add(Integer.valueOf(key)));
         int maxWage = Collections.max(listofwage);
-        System.out.println(wageMap.get(String.valueOf(maxWage)));
+        int computerMove = wageMap.get(String.valueOf(maxWage));
+        System.out.println("max key= "+computerMove);
+        int compMY = computerMove / 3;
+        int compMX = computerMove % 3;
+        System.out.println("x="+compMX+"y="+compMY);
+        SetUser(table,compMX,compMY,"O");
     }
 
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
