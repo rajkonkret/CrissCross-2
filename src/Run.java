@@ -30,6 +30,8 @@ public class Run {
             calculateWage(table, tablewage);
             Draw(tablewage);
             Draw(table);
+            gamer="O";
+            isWinGame = (IsWin(table, gamer));
             if (isWinGame) {
                 break;
             }
@@ -127,6 +129,7 @@ public class Run {
         int wage;
         int countX;
         int countO;
+        int countFree;
         List<Integer> listofwage = new ArrayList<>();
         Map<String, Integer> wageMap = new HashMap<>();
         wageMap.clear();
@@ -134,6 +137,7 @@ public class Run {
         for (int j = 0; j < 3; j++) {
             countO = 0;
             countX = 0;
+            countFree = 0;
             for (int i = 0; i < 3; i++) {
 
                 if (table[j][i].equalsIgnoreCase("X")) {
@@ -141,10 +145,15 @@ public class Run {
                 }
                 if (table[j][i].equalsIgnoreCase("O")) {
                     countO = +1;
+                }else if (table[j][i].equalsIgnoreCase(" ")) {
+                    countFree = +1;
                 }
             }
             System.out.println("\n" + countX + " " + countO + " " + j);
             wage = countX - countO;
+            if (countFree>0 && countX>1) {
+                wage*=2;
+            }
             for (int i = 0; i < 3; i++) {
                 if (table[j][i].equalsIgnoreCase(" ")) {
                     tablewage[j][i] = tablewage[j][i] + wage;
@@ -155,6 +164,7 @@ public class Run {
         for (int j = 0; j < 3; j++) {
             countO = 0;
             countX = 0;
+            countFree = 0;
             for (int i = 0; i < 3; i++) {
 
                 if (table[i][j].equalsIgnoreCase("X")) {
@@ -162,10 +172,15 @@ public class Run {
                 }
                 if (table[i][j].equalsIgnoreCase("O")) {
                     countO = +1;
+                }else if (table[i][j].equalsIgnoreCase(" ")) {
+                    countFree = +1;
                 }
             }
 
             wage = countX - countO;
+            if (countFree>0 && countX>1) {
+                wage*=2;
+            }
             for (int i = 0; i < 3; i++) {
                 if (table[i][j].equalsIgnoreCase(" ")) {
                     tablewage[i][j] = tablewage[i][j] + wage;
@@ -176,14 +191,20 @@ public class Run {
         }
         countO = 0;
         countX = 0;
+        countFree = 0;
         for (int a=0;a<3;a++) {
             if (table[a][a].equalsIgnoreCase("X")) {
                 countX = +1;
             } else if (table[a][a].equalsIgnoreCase("O")) {
                 countO = +1;
+            }else if (table[a][a].equalsIgnoreCase(" ")) {
+                countFree = +1;
             }
         }
         wage = countX - countO;
+        if (countFree>0 && countX>1) {
+            wage*=2;
+        }
         for (int a = 0; a < 3; a++) {
             if (table[a][a].equalsIgnoreCase(" ")) {
                 tablewage[a][a] = tablewage[a][a] + wage;
@@ -202,7 +223,7 @@ public class Run {
         System.out.println(wageMap.size());
         //System.out.println(wageMap.get(0).toString());
         wageMap.forEach((key, value) -> listofwage.add(Integer.valueOf(key)));
-        int maxWage = Collections.max(listofwage);
+        int maxWage = Collections.min(listofwage);
         int computerMove = wageMap.get(String.valueOf(maxWage));
         System.out.println("max key= " + computerMove);
         int compMY = computerMove / 3;
