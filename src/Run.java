@@ -123,7 +123,8 @@ public class Run {
         return table;
     }
 
-    public static String[][] MoveFromComputerAI(String[][] table) {
+    public static String[][] MoveFromComputerAI(String[][] table)
+    {
         return table;
     }
 
