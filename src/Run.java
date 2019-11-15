@@ -67,7 +67,7 @@ public class Run {
     }
 
     private static void Draw(int[][] tablewage) {
-        System.out.println("Plansza gry:");
+        System.out.println("Plansza gry (tablewage):");
 
         System.out.print("    0   1   2");
         for (int i = 0; i < tablewage.length; i++) {
