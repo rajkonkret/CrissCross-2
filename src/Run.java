@@ -25,16 +25,10 @@ public class Run {
             System.out.println("y=");
             int yaxis = scanner.nextInt();
 
-        /*for (int i=0; i<3;i++){
-
-            table = SetUser(table, i, i, "O");
-            table = SetUser(table, 2-i, i, "X");
-
-        }*/
             table = SetUser(table, xaxis, yaxis, gamer);
             Draw(table);
             isWinGame = (IsWin(table, gamer));
-            calculateWage(table,tablewage);
+            calculateWage(table, tablewage);
             Draw(tablewage);
             if (isWinGame) {
                 break;
@@ -47,6 +41,7 @@ public class Run {
                 break;
             }
         }
+
         if (isWinGame) {
             System.out.println("\nWygrał: " + gamer);
         } else {
@@ -70,7 +65,8 @@ public class Run {
             }
         }
     }
-    private static void Draw(int[][] tablewage){
+
+    private static void Draw(int[][] tablewage) {
         System.out.println("Plansza gry:");
 
         System.out.print("    0   1   2");
@@ -115,26 +111,53 @@ public class Run {
     }
 
     public static void calculateWage(String[][] table, int[][] tablewage) {
-        int countX =0;
-        int countO =0;
+        int wage;
+        int countX;
+        int countO;
 
-        for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            countO = 0;
+            countX = 0;
+            for (int i = 0; i < 3; i++) {
 
-            if (table[0][i].equalsIgnoreCase("X")){
-            countX=+1;
+                if (table[j][i].equalsIgnoreCase("X")) {
+                    countX = +1;
+                }
+                if (table[j][i].equalsIgnoreCase("O")) {
+                    countO = +1;
+                }
             }
-            if (table[0][i].equalsIgnoreCase("O")){
-            countO=+1;
+            System.out.println("\n"+countX+" "+countO+" "+j);
+            wage = countO - countX;
+            for (int i = 0; i < 3; i++) {
+                if (table[j][i].equalsIgnoreCase(" ")) {
+                    tablewage[j][i] = wage;
+                    System.out.println("\n"+j+" "+wage);
+                }
             }
         }
-        int wage = countX - countO;
-        for (int i=0; i<3; i++){
-            if (table[0][i].equalsIgnoreCase(" ")) {
-                tablewage[0][i]=tablewage[0][i]+wage;
+        for (int j = 0; j < 3; j++) {
+            countO = 0;
+            countX = 0;
+            for (int i = 0; i < 3; i++) {
+
+                if (table[i][j].equalsIgnoreCase("X")) {
+                    countX = +1;
+                }
+                if (table[i][j].equalsIgnoreCase("O")) {
+                    countO = +1;
+                }
+            }
+
+            wage = countO - countX;
+            for (int i = 0; i < 3; i++) {
+                if (table[i][j].equalsIgnoreCase(" ")) {
+                    tablewage[i][j] = wage;
+                }
             }
         }
-
     }
+
 
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
         boolean isChange = false;
