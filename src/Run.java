@@ -179,7 +179,9 @@ public class Run {
         for (int j = 0; j < 3; j++) {
             for (int i = 0; i < 3; i++) {
 
-                if (tablewage[j][i] != 99) wageMap.put(String.valueOf(tablewage[j][i]), i + j * 3);
+                if (tablewage[j][i] != 99) {
+                    wageMap.put(String.valueOf(tablewage[j][i]), i + j * 3);
+                }
             }
         }
         System.out.println(wageMap.size());
@@ -187,11 +189,11 @@ public class Run {
         wageMap.forEach((key, value) -> listofwage.add(Integer.valueOf(key)));
         int maxWage = Collections.max(listofwage);
         int computerMove = wageMap.get(String.valueOf(maxWage));
-        System.out.println("max key= "+computerMove);
+        System.out.println("max key= " + computerMove);
         int compMY = computerMove / 3;
         int compMX = computerMove % 3;
-        System.out.println("x="+compMX+"y="+compMY);
-        SetUser(table,compMX,compMY,"O");
+        System.out.println("x=" + compMX + "y=" + compMY);
+        SetUser(table, compMX, compMY, "O");
     }
 
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
