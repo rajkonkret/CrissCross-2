@@ -1,6 +1,10 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.MissingFormatWidthException;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+
+import static java.lang.System.out;
 
 public class Run {
     public static void main(String[] args) {
@@ -19,10 +23,10 @@ public class Run {
 
         while (CanI(table)) {
             gamer = "X";
-            System.out.println("\nGracz " + gamer + " twój ruch");
-            System.out.println("x=");
+            out.println("\nGracz " + gamer + " twój ruch");
+            out.println("x=");
             int xaxis = scanner.nextInt();
-            System.out.println("y=");
+            out.println("y=");
             int yaxis = scanner.nextInt();
 
             table = SetUser(table, xaxis, yaxis, gamer);
@@ -43,39 +47,39 @@ public class Run {
         }
 
         if (isWinGame) {
-            System.out.println("\nWygrał: " + gamer);
+            out.println("\nWygrał: " + gamer);
         } else {
-            System.out.println("\nREMIS");
+            out.println("\nREMIS");
         }
-        System.out.println("\nKONIEC");
+        out.println("\nKONIEC");
     }
 
 
     private static void Draw(String[][] table) {
-        System.out.println(table.length);
-        System.out.println("Plansza gry:");
+        out.println(table.length);
+        out.println("Plansza gry:");
 
-        System.out.print("    0   1   2");
+        out.print("    0   1   2");
         for (int i = 0; i < table.length; i++) {
-            System.out.println((i == 0) ? "" : "\n  |---|---|---");
-            System.out.print(i);
+            out.println((i == 0) ? "" : "\n  |---|---|---");
+            out.print(i);
             for (int j = 0; j < table.length; j++) {
 
-                System.out.print(((j == 0) ? " | " : "") + table[i][j] + " | ");
+                out.print(((j == 0) ? " | " : "") + table[i][j] + " | ");
             }
         }
     }
 
     private static void Draw(int[][] tablewage) {
-        System.out.println("Plansza gry:");
+        out.println("Plansza gry:");
 
-        System.out.print("    0   1   2");
+        out.print("    0   1   2");
         for (int i = 0; i < tablewage.length; i++) {
-            System.out.println((i == 0) ? "" : "\n  |---|---|---");
-            System.out.print(i);
+            out.println((i == 0) ? "" : "\n  |---|---|---");
+            out.print(i);
             for (int j = 0; j < tablewage.length; j++) {
 
-                System.out.print(((j == 0) ? " | " : "") + tablewage[i][j] + " | ");
+                out.print(((j == 0) ? " | " : "") + tablewage[i][j] + " | ");
             }
         }
 
@@ -92,7 +96,9 @@ public class Run {
         }
         return table;
 
-    } public static void Fulltable(int[][] tablewage, int wage) {
+    }
+
+    public static void Fulltable(int[][] tablewage, int wage) {
 
         for (int i = 0; i < tablewage.length; i++) {
 
@@ -114,7 +120,7 @@ public class Run {
                 table[y][x] = mychar;
                 isChange = true;
             } else {
-                System.out.println("Błędny ruch!!!");
+                out.println("Błędny ruch!!!");
                 break;
             }
         }
@@ -125,9 +131,10 @@ public class Run {
         int wage;
         int countX;
         int countO;
+        Map<Integer, Integer> wageMap = new HashMap<Integer, Integer>();
+        wageMap.clear();
 
-        Fulltable(tablewage,0);
-
+        Fulltable(tablewage, 0);
         for (int j = 0; j < 3; j++) {
             countO = 0;
             countX = 0;
@@ -140,12 +147,12 @@ public class Run {
                     countO = +1;
                 }
             }
-            System.out.println("\n"+countX+" "+countO+" "+j);
+            out.println("\n" + countX + " " + countO + " " + j);
             wage = countO - countX;
             for (int i = 0; i < 3; i++) {
                 if (table[j][i].equalsIgnoreCase(" ")) {
-                    tablewage[j][i] =tablewage[j][i]+wage;
-                    System.out.println("\n"+j+" "+wage);
+                    tablewage[j][i] = tablewage[j][i] + wage;
+                    out.println("\n" + j + " " + wage);
                 }
             }
         }
@@ -165,12 +172,19 @@ public class Run {
             wage = countO - countX;
             for (int i = 0; i < 3; i++) {
                 if (table[i][j].equalsIgnoreCase(" ")) {
-                    tablewage[i][j] =tablewage[i][j]+wage;
+                    tablewage[i][j] = tablewage[i][j] + wage;
                 }
             }
         }
-    }
 
+        for (int j = 0; j < 3; j++) {
+            for (int i = 0; i < 3; i ++) {
+
+                wageMap.put(i + j * 3, tablewage[j][i]);
+            }
+        }
+        out.println(wageMap.size());
+    }
 
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
         boolean isChange = false;
