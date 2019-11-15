@@ -126,7 +126,7 @@ public class Run {
         int wage;
         int countX;
         int countO;
-        Map<Integer, Integer> wageMap = new HashMap<Integer, Integer>();
+        Map<String, Integer> wageMap = new HashMap<>();
         wageMap.clear();
 
         Fulltable(tablewage, 0);
@@ -175,12 +175,12 @@ public class Run {
         for (int j = 0; j < 3; j++) {
             for (int i = 0; i < 3; i ++) {
 
-                wageMap.put(i + j * 3, tablewage[j][i]);
+                wageMap.put(String.valueOf(tablewage[j][i]) ,i+j*3);
             }
         }
         System.out.println(wageMap.size());
-        System.out.println(wageMap.get(1).toString());
-
+        //System.out.println(wageMap.get(0).toString());
+        wageMap.forEach((key, value) -> System.out.println(key + " " + value));
     }
 
     public static String[][] MoveFromComputer(String[][] table, String mychar) {
