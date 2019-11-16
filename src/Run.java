@@ -28,7 +28,7 @@ public class Run {
             Draw(table);
             isWinGame = (IsWin(table, gamer));
             calculateWage(table, tablewage);
-            Draw(tablewage);
+            //Draw(tablewage);
             Draw(table);
 
             isWinGame = (IsWin(table, gamer));
@@ -154,7 +154,7 @@ public class Run {
                     countFree += 1;
                 }
             }
-            System.out.println("\n" + countX + " " + countO + " " + j);
+            //System.out.println("\n" + countX + " " + countO + " " + j);
             wage = countX - countO;
             if (countFree > 0 && countX > 1) {
                 wage *= 2;
@@ -162,7 +162,7 @@ public class Run {
             for (int i = 0; i < 3; i++) {
                 if (table[j][i].equalsIgnoreCase(" ")) {
                     tablewage[j][i] = tablewage[j][i] + wage;
-                    System.out.println("\n" + j + " " + wage);
+                    //System.out.println("\n" + j + " " + wage);
                 }
             }
         }
@@ -232,15 +232,15 @@ public class Run {
                 }
             }
         }
-        System.out.println(wageMap.size());
+        //System.out.println(wageMap.size());
         //System.out.println(wageMap.get(0).toString());
         wageMap.forEach((key, value) -> listofwage.add(Integer.valueOf(key)));
         int maxWage = Collections.min(listofwage);
         int computerMove = wageMap.get(String.valueOf(maxWage));
-        System.out.println("max key= " + computerMove);
+        //System.out.println("max key= " + computerMove);
         int compMY = computerMove / 3;
         int compMX = computerMove % 3;
-        System.out.println("x=" + compMX + "y=" + compMY);
+        //System.out.println("x=" + compMX + "y=" + compMY);
         SetUser(table, compMX, compMY, "O");
     }
 
