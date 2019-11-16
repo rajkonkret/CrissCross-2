@@ -30,6 +30,11 @@ public class Run {
             calculateWage(table, tablewage);
             Draw(tablewage);
             Draw(table);
+
+            isWinGame = (IsWin(table, gamer));
+            if (isWinGame) {
+                break;
+            }
             gamer = "O";
             isWinGame = (IsWin(table, gamer));
             if (isWinGame) {
@@ -223,7 +228,7 @@ public class Run {
         System.out.println(wageMap.size());
         //System.out.println(wageMap.get(0).toString());
         wageMap.forEach((key, value) -> listofwage.add(Integer.valueOf(key)));
-        int maxWage = Collections.min(listofwage);
+        int maxWage = Collections.max(listofwage);
         int computerMove = wageMap.get(String.valueOf(maxWage));
         System.out.println("max key= " + computerMove);
         int compMY = computerMove / 3;
