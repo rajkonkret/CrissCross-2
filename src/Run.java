@@ -217,6 +217,13 @@ public class Run {
                 tablewage[a][a] = 99;
             }
         }
+        for (int a = 0; a < 3; a++) {
+            if (table[2-a][a].equalsIgnoreCase(" ")) {
+                tablewage[2-a][a] = tablewage[2-a][a] + wage;
+            } else {
+                tablewage[2-a][a] = 99;
+            }
+        }
         for (int j = 0; j < 3; j++) {
             for (int i = 0; i < 3; i++) {
 
@@ -228,7 +235,7 @@ public class Run {
         System.out.println(wageMap.size());
         //System.out.println(wageMap.get(0).toString());
         wageMap.forEach((key, value) -> listofwage.add(Integer.valueOf(key)));
-        int maxWage = Collections.max(listofwage);
+        int maxWage = Collections.min(listofwage);
         int computerMove = wageMap.get(String.valueOf(maxWage));
         System.out.println("max key= " + computerMove);
         int compMY = computerMove / 3;
