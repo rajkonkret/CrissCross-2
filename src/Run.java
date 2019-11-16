@@ -30,7 +30,7 @@ public class Run {
             calculateWage(table, tablewage);
             Draw(tablewage);
             Draw(table);
-            gamer="O";
+            gamer = "O";
             isWinGame = (IsWin(table, gamer));
             if (isWinGame) {
                 break;
@@ -141,18 +141,18 @@ public class Run {
             for (int i = 0; i < 3; i++) {
 
                 if (table[j][i].equalsIgnoreCase("X")) {
-                    countX = +1;
+                    countX += 1;
                 }
                 if (table[j][i].equalsIgnoreCase("O")) {
-                    countO = +1;
-                }else if (table[j][i].equalsIgnoreCase(" ")) {
-                    countFree = +1;
+                    countO += 1;
+                } else if (table[j][i].equalsIgnoreCase(" ")) {
+                    countFree += 1;
                 }
             }
             System.out.println("\n" + countX + " " + countO + " " + j);
             wage = countX - countO;
-            if (countFree>0 && countX>1) {
-                wage*=2;
+            if (countFree > 0 && countX > 1) {
+                wage *= 2;
             }
             for (int i = 0; i < 3; i++) {
                 if (table[j][i].equalsIgnoreCase(" ")) {
@@ -168,18 +168,18 @@ public class Run {
             for (int i = 0; i < 3; i++) {
 
                 if (table[i][j].equalsIgnoreCase("X")) {
-                    countX = +1;
+                    countX += 1;
                 }
                 if (table[i][j].equalsIgnoreCase("O")) {
-                    countO = +1;
-                }else if (table[i][j].equalsIgnoreCase(" ")) {
-                    countFree = +1;
+                    countO += 1;
+                } else if (table[i][j].equalsIgnoreCase(" ")) {
+                    countFree += 1;
                 }
             }
 
             wage = countX - countO;
-            if (countFree>0 && countX>1) {
-                wage*=2;
+            if (countFree > 0 && countX > 1) {
+                wage *= 2;
             }
             for (int i = 0; i < 3; i++) {
                 if (table[i][j].equalsIgnoreCase(" ")) {
@@ -192,18 +192,18 @@ public class Run {
         countO = 0;
         countX = 0;
         countFree = 0;
-        for (int a=0;a<3;a++) {
+        for (int a = 0; a < 3; a++) {
             if (table[a][a].equalsIgnoreCase("X")) {
-                countX = +1;
+                countX += 1;
             } else if (table[a][a].equalsIgnoreCase("O")) {
-                countO = +1;
-            }else if (table[a][a].equalsIgnoreCase(" ")) {
-                countFree = +1;
+                countO += 1;
+            } else if (table[a][a].equalsIgnoreCase(" ")) {
+                countFree += 1;
             }
         }
         wage = countX - countO;
-        if (countFree>0 && countX>1) {
-            wage*=2;
+        if (countFree > 0 && countX > 1) {
+            wage *= 2;
         }
         for (int a = 0; a < 3; a++) {
             if (table[a][a].equalsIgnoreCase(" ")) {
